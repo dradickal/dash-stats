@@ -23,28 +23,78 @@ __export(keystone_exports, {
   default: () => keystone_default
 });
 module.exports = __toCommonJS(keystone_exports);
-var import_core2 = require("@keystone-6/core");
+var import_core4 = require("@keystone-6/core");
 
-// schema.ts
+// schema/Dash.ts
 var import_core = require("@keystone-6/core");
 var import_access = require("@keystone-6/core/access");
 var import_fields = require("@keystone-6/core/fields");
+var zone = (0, import_fields.relationship)({
+  ref: "Zone.dashes",
+  many: false,
+  ui: {
+    displayMode: "cards",
+    cardFields: ["name"],
+    inlineEdit: { fields: ["name"] },
+    linkToItem: true,
+    inlineConnect: true,
+    inlineCreate: { fields: ["name"] }
+  }
+});
+var startTime = (0, import_fields.timestamp)({
+  validation: { isRequired: true },
+  graphql: {
+    isNonNull: {
+      read: true,
+      create: true
+    }
+  }
+});
+var endTime = (0, import_fields.timestamp)({
+  validation: { isRequired: true },
+  graphql: {
+    isNonNull: {
+      read: true,
+      create: true
+    }
+  }
+});
+var earningsTotal = (0, import_fields.decimal)({
+  label: "Total Earnings",
+  precision: 5,
+  scale: 2,
+  ui: {
+    createView: { fieldMode: "hidden" },
+    itemView: {
+      fieldPosition: "sidebar",
+      fieldMode: "read"
+    }
+  }
+});
+var earningsFromApp = (0, import_fields.decimal)({
+  label: "Total Earnings",
+  precision: 5,
+  scale: 2,
+  ui: {
+    createView: { fieldMode: "hidden" },
+    itemView: {
+      fieldPosition: "sidebar",
+      fieldMode: "read"
+    }
+  }
+});
 var earningsGroup = (0, import_core.group)({
   label: "Earnings",
   description: "Breakdown of Earnings from Dash",
   fields: {
     earningFromBasePay: (0, import_fields.decimal)({
-      validation: {
-        isRequired: true
-      },
+      validation: { isRequired: true },
       label: "Base Pay",
       precision: 5,
       scale: 2
     }),
     earningsFromAppTips: (0, import_fields.decimal)({
-      validation: {
-        isRequired: true
-      },
+      validation: { isRequired: true },
       label: "Tips from App",
       precision: 5,
       scale: 2
@@ -57,93 +107,55 @@ var earningsGroup = (0, import_core.group)({
     })
   }
 });
+var Dash = (0, import_core.list)({
+  access: import_access.allowAll,
+  fields: {
+    startTime,
+    endTime,
+    zone,
+    earningsTotal,
+    earningsFromApp,
+    ...earningsGroup
+  }
+});
+
+// schema/User.ts
+var import_core2 = require("@keystone-6/core");
+var import_access2 = require("@keystone-6/core/access");
+var import_fields2 = require("@keystone-6/core/fields");
+var User = (0, import_core2.list)({
+  access: import_access2.allowAll,
+  fields: {
+    name: (0, import_fields2.text)({ validation: { isRequired: true } }),
+    email: (0, import_fields2.text)({
+      validation: { isRequired: true },
+      isIndexed: "unique"
+    }),
+    password: (0, import_fields2.password)({ validation: { isRequired: true } }),
+    createdAt: (0, import_fields2.timestamp)({
+      defaultValue: { kind: "now" }
+    })
+  }
+});
+
+// schema/Zone.ts
+var import_core3 = require("@keystone-6/core");
+var import_access3 = require("@keystone-6/core/access");
+var import_fields3 = require("@keystone-6/core/fields");
+var Zone = (0, import_core3.list)({
+  access: import_access3.allowAll,
+  ui: { isHidden: true },
+  fields: {
+    name: (0, import_fields3.text)(),
+    dashes: (0, import_fields3.relationship)({ ref: "Dash.zone", many: true })
+  }
+});
+
+// schema.ts
 var lists = {
-  User: (0, import_core.list)({
-    // WARNING
-    //   for this starter project, anyone can create, query, update and delete anything
-    //   if you want to prevent random people on the internet from accessing your data,
-    //   you can find out more at https://keystonejs.com/docs/guides/auth-and-access-control
-    access: import_access.allowAll,
-    fields: {
-      name: (0, import_fields.text)({ validation: { isRequired: true } }),
-      email: (0, import_fields.text)({
-        validation: { isRequired: true },
-        isIndexed: "unique"
-      }),
-      password: (0, import_fields.password)({ validation: { isRequired: true } }),
-      createdAt: (0, import_fields.timestamp)({
-        defaultValue: { kind: "now" }
-      })
-    }
-  }),
-  Dash: (0, import_core.list)({
-    access: import_access.allowAll,
-    fields: {
-      startTime: (0, import_fields.timestamp)({
-        validation: { isRequired: true },
-        graphql: {
-          isNonNull: {
-            read: true,
-            create: true
-          }
-        }
-      }),
-      endTime: (0, import_fields.timestamp)({
-        validation: { isRequired: true },
-        graphql: {
-          isNonNull: {
-            read: true,
-            create: true
-          }
-        }
-      }),
-      zone: (0, import_fields.relationship)({
-        ref: "Zone.dashes",
-        many: false,
-        ui: {
-          displayMode: "cards",
-          cardFields: ["name"],
-          inlineEdit: { fields: ["name"] },
-          linkToItem: true,
-          inlineConnect: true,
-          inlineCreate: { fields: ["name"] }
-        }
-      }),
-      earningsTotal: (0, import_fields.decimal)({
-        label: "Total Earnings",
-        precision: 5,
-        scale: 2,
-        ui: {
-          createView: { fieldMode: "hidden" },
-          itemView: {
-            fieldPosition: "sidebar",
-            fieldMode: "read"
-          }
-        }
-      }),
-      earningsFromApp: (0, import_fields.decimal)({
-        label: "Total Earnings",
-        precision: 5,
-        scale: 2,
-        ui: {
-          createView: { fieldMode: "hidden" },
-          itemView: {
-            fieldPosition: "sidebar",
-            fieldMode: "read"
-          }
-        }
-      }),
-      ...earningsGroup
-    }
-  }),
-  Zone: (0, import_core.list)({
-    access: import_access.allowAll,
-    ui: { isHidden: true },
-    fields: {
-      name: (0, import_fields.text)(),
-      dashes: (0, import_fields.relationship)({ ref: "Dash.zone", many: true })
-    }
-  })
+  User,
+  Dash,
+  Zone
 };
 
 // auth.ts
@@ -181,7 +193,7 @@ var session = (0, import_session.statelessSessions)({
 
 // keystone.ts
 var keystone_default = withAuth(
-  (0, import_core2.config)({
+  (0, import_core4.config)({
     db: {
       // we're using sqlite for the fastest startup experience
       //   for more information on what database might be appropriate for you
