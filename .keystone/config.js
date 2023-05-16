@@ -195,9 +195,6 @@ var session = (0, import_session.statelessSessions)({
 var keystone_default = withAuth(
   (0, import_core4.config)({
     db: {
-      // we're using sqlite for the fastest startup experience
-      //   for more information on what database might be appropriate for you
-      //   see https://keystonejs.com/docs/guides/choosing-a-database#title
       provider: "mysql",
       url: "mysql://dashStatsAdmin:letmein@localhost:3306/dash_stats"
     },
