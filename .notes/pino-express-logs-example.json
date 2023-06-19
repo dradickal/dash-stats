@@ -1,0 +1,181 @@
+[
+    {
+        "level": 30,
+        "time": 1684803372910,
+        "pid": 15160,
+        "hostname": "Davids-MacBook-Pro.local",
+        "req": {
+            "id": 21,
+            "method": "GET",
+            "url": "/signin?from=%2Ffavicon.ico",
+            "query": {
+                "from": "/favicon.ico"
+            },
+            "params": {},
+            "headers": {
+                "host": "localhost:3000",
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/112.0",
+                "accept": "image/avif,image/webp,*/*",
+                "accept-language": "en-US,en;q=0.5",
+                "accept-encoding": "gzip, deflate, br",
+                "referer": "http://localhost:3000/",
+                "connection": "keep-alive",
+                "cookie": "keystonejs-session=Fe26.2**a6cd53d6bc78178540fdbec2ec204252c744b7e6af6ebb343dfb5cc91774325a*ewR_IWYWJOdD2BtodvjWag*4_imOLkHygMNn0kjCunckrUTWIyEK5yW0RUnJXoDyuIZ2I1R9pbMjH3dYeCUzSygsuTUYOpcszW9duOkUyelNg*1686975527828*0fc982dbb479517b54bd03b2bc222e2f1c3d5cfa6f10c8f803ca1ad4bf1242f2*-_QhSjwDdCfY6W0fcS9sMtiax2_eZzaMsS7q6n8-2kE",
+                "sec-fetch-dest": "image",
+                "sec-fetch-mode": "no-cors",
+                "sec-fetch-site": "same-origin"
+            },
+            "remoteAddress": "::ffff:127.0.0.1",
+            "remotePort": 53400
+        },
+        "res": {
+            "statusCode": 200,
+            "headers": {
+                "x-powered-by": "Next.js",
+                "cache-control": "no-store, must-revalidate",
+                "etag": "\"4xa8yketdc54m\"",
+                "content-type": "text/html; charset=utf-8",
+                "vary": "Accept-Encoding",
+                "content-encoding": "gzip"
+            }
+        },
+        "responseTime": 27,
+        "msg": "request completed"
+    },
+    {
+        "level": 30,
+        "time": 1684803384565,
+        "pid": 15160,
+        "hostname": "Davids-MacBook-Pro.local",
+        "req": {
+            "id": 22,
+            "method": "POST",
+            "url": "/api/graphql",
+            "query": {},
+            "params": {},
+            "headers": {
+                "host": "localhost:3000",
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/112.0",
+                "accept": "*/*",
+                "accept-language": "en-US,en;q=0.5",
+                "accept-encoding": "gzip, deflate, br",
+                "referer": "http://localhost:3000/signin?from=%2Fdashes%2Fclhsmiwbk0002rrlyvpqxsxgp",
+                "content-type": "application/json",
+                "apollo-require-preflight": "true",
+                "content-length": "472",
+                "origin": "http://localhost:3000",
+                "connection": "keep-alive",
+                "cookie": "keystonejs-session=Fe26.2**a6cd53d6bc78178540fdbec2ec204252c744b7e6af6ebb343dfb5cc91774325a*ewR_IWYWJOdD2BtodvjWag*4_imOLkHygMNn0kjCunckrUTWIyEK5yW0RUnJXoDyuIZ2I1R9pbMjH3dYeCUzSygsuTUYOpcszW9duOkUyelNg*1686975527828*0fc982dbb479517b54bd03b2bc222e2f1c3d5cfa6f10c8f803ca1ad4bf1242f2*-_QhSjwDdCfY6W0fcS9sMtiax2_eZzaMsS7q6n8-2kE",
+                "sec-fetch-dest": "empty",
+                "sec-fetch-mode": "cors",
+                "sec-fetch-site": "same-origin"
+            },
+            "remoteAddress": "::ffff:127.0.0.1",
+            "remotePort": 53401
+        },
+        "res": {
+            "statusCode": 200,
+            "headers": {
+                "x-powered-by": "Express",
+                "set-cookie": "keystonejs-session=Fe26.2**f2426cdcea8f2425cc7b20e42ec49eb19613e203a9ea9a3950b7260b9d5e548c*pxEfIpBsBeLmzv31yVfVnw*3oFh7unvaZ5vt4mocDemKQhnKdgNS77-asZrtfnNA4qMIqg11gGzMY3UzUNwNYwSMm2ycab_p6g5lrKCNPYRFA*1687395384560*cfe72040f4327b2623707287b7174e02dfaebaf139f9bd10c6abbae1dcfba5e5*K7iSI_X_7XXL983DENggtRaq4vopRI-58f7G4aShDdk; Max-Age=2592000; Path=/; Expires=Thu, 22 Jun 2023 00:56:24 GMT; HttpOnly; SameSite=Lax",
+                "cache-control": "no-store",
+                "content-type": "application/json; charset=utf-8",
+                "content-length": "143",
+                "etag": "W/\"8f-DpeAacGhkyN7an7Vx7j4wuADM9k\""
+            }
+        },
+        "responseTime": 149,
+        "msg": "request completed"
+    },
+    {
+        "level": 30,
+        "time": 1685933624786,
+        "pid": 15160,
+        "hostname": "Davids-MacBook-Pro.local",
+        "req": {
+            "id": 1,
+            "method": "GET",
+            "url": "/_next/static/chunks/pages/index.js",
+            "query": {},
+            "params": {},
+            "headers": {
+                "host": "localhost:3000",
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/112.0",
+                "accept": "*/*",
+                "accept-language": "en-US,en;q=0.5",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "referer": "http://localhost:3000/dashes/clhsmiwbk0002rrlyvpqxsxgp",
+                "cookie": "keystonejs-session=Fe26.2**f2426cdcea8f2425cc7b20e42ec49eb19613e203a9ea9a3950b7260b9d5e548c*pxEfIpBsBeLmzv31yVfVnw*3oFh7unvaZ5vt4mocDemKQhnKdgNS77-asZrtfnNA4qMIqg11gGzMY3UzUNwNYwSMm2ycab_p6g5lrKCNPYRFA*1687395384560*cfe72040f4327b2623707287b7174e02dfaebaf139f9bd10c6abbae1dcfba5e5*K7iSI_X_7XXL983DENggtRaq4vopRI-58f7G4aShDdk",
+                "sec-fetch-dest": "script",
+                "sec-fetch-mode": "no-cors",
+                "sec-fetch-site": "same-origin"
+            },
+            "remoteAddress": "::ffff:127.0.0.1",
+            "remotePort": 63445
+        },
+        "msg": "request completed"
+    },
+    {
+        "level": 30,
+        "time": 1685934285006,
+        "pid": 15160,
+        "hostname": "Davids-MacBook-Pro.local",
+        "req": {
+            "id": 43,
+            "method": "POST",
+            "url": "/api/graphql",
+            "query": {},
+            "params": {},
+            "headers": {
+                "host": "localhost:3000",
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/112.0",
+                "accept": "*/*",
+                "accept-language": "en-US,en;q=0.5",
+                "accept-encoding": "gzip, deflate, br",
+                "referer": "http://localhost:3000/dashes",
+                "content-type": "application/json",
+                "apollo-require-preflight": "true",
+                "content-length": "328",
+                "origin": "http://localhost:3000",
+                "connection": "keep-alive",
+                "cookie": "keystonejs-session=Fe26.2**447872198a68bdd99aaa283beba1d03bc9af049c3652622ba0b3122d70378d09*jCBaSCyyigo6huTeMH-5uA*7RhwpXoS5gHgMXiVThqMMilPT09knPzoNVT0YeN5nyaF2zbzQ5oRXFgFJAS4TVeSL50y5uLsBRBEpG-lluGQxA*1688526282487*b19308cb0c15720bfe60e4c04254d8a5dee7fd355e93a2ada932129d70156584*Gq_oR2Duu0GYJ53CBJe6zzKFGrMky4caQuizg8sAJmQ",
+                "sec-fetch-dest": "empty",
+                "sec-fetch-mode": "cors",
+                "sec-fetch-site": "same-origin"
+            },
+            "remoteAddress": "::ffff:127.0.0.1",
+            "remotePort": 63615
+        },
+        "msg": "request completed"
+    },
+    {
+        "level": 30,
+        "time": 1685934669446,
+        "pid": 21473,
+        "hostname": "Davids-MacBook-Pro.local",
+        "req": {
+            "id": 30,
+            "method": "GET",
+            "url": "/favicon.ico",
+            "query": {},
+            "params": {},
+            "headers": {
+                "host": "localhost:3000",
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/112.0",
+                "accept": "image/avif,image/webp,*/*",
+                "accept-language": "en-US,en;q=0.5",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "referer": "http://localhost:3000/",
+                "cookie": "keystonejs-session=Fe26.2**3c0f36c08c933c8117139abde850ecfe638484baa7c8383a9f9e628d30ffae1e*UQNieWWthrsgW2cxsxNZ5Q*bUFpbgkV2XwhSxCPlCIw2hQuFNnDKX9oSfYtXcX5p4kZ8hDR1gNPHifLWoOOmi25JE8-c2t91MVQWhxvVvTHgg*1688526667624*1d8c424400cc2760c422905df155173722fa5426178cca43b123ba36e79409d0*6p6B7cFUltqmOKpR25OteN_Jw0vCVVHhCsaHRnP1-4Q",
+                "sec-fetch-dest": "image",
+                "sec-fetch-mode": "no-cors",
+                "sec-fetch-site": "same-origin"
+            },
+            "remoteAddress": "::ffff:127.0.0.1",
+            "remotePort": 63770
+        },
+        "msg": "request completed"
+    }
+]

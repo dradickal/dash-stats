@@ -1,7 +1,9 @@
 "use strict";
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
@@ -15,6 +17,14 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // keystone.ts
@@ -109,6 +119,19 @@ var earningsGroup = (0, import_core.group)({
 });
 var Dash = (0, import_core.list)({
   access: import_access.allowAll,
+  hooks: {
+    resolveInput: async ({
+      listKey,
+      operation,
+      inputData,
+      item,
+      resolvedData,
+      context
+    }) => {
+      console.log(listKey, operation, item);
+      return resolvedData;
+    }
+  },
   fields: {
     startTime,
     endTime,
@@ -191,12 +214,24 @@ var session = (0, import_session.statelessSessions)({
   secret: sessionSecret
 });
 
+// logger.ts
+var import_pino = require("pino");
+var logger_default = (0, import_pino.pino)({});
+
 // keystone.ts
+var import_pino_http = __toESM(require("pino-http"));
 var keystone_default = withAuth(
   (0, import_core4.config)({
     db: {
       provider: "mysql",
       url: "mysql://dashStatsAdmin:letmein@localhost:3306/dash_stats"
+    },
+    server: {
+      extendExpressApp(app, context) {
+        app.use((0, import_pino_http.default)({
+          logger: logger_default
+        }));
+      }
     },
     lists,
     session
