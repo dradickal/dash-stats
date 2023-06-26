@@ -25,11 +25,11 @@ model Dash {
   endTime              DateTime
   zone                 Zone?    @relation("Dash_zone", fields: [zoneId], references: [id])
   zoneId               String?  @map("zone")
-  earningsTotal        Decimal? @mysql.Decimal(5, 2)
-  earningsFromApp      Decimal? @mysql.Decimal(5, 2)
-  earningFromBasePay   Decimal  @mysql.Decimal(5, 2)
-  earningsFromAppTips  Decimal  @mysql.Decimal(5, 2)
-  earningsFromCashTips Decimal? @default("0") @mysql.Decimal(5, 2)
+  earningsTotal        Decimal? @mysql.Decimal(6, 2)
+  earningsTotalFromApp Decimal? @mysql.Decimal(6, 2)
+  earningFromBasePay   Decimal  @mysql.Decimal(6, 2)
+  earningsFromAppTips  Decimal  @mysql.Decimal(6, 2)
+  earningsFromCashTips Decimal? @default("0") @mysql.Decimal(6, 2)
 
   @@index([zoneId])
 }

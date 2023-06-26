@@ -117,7 +117,7 @@ type Dash {
   endTime: DateTime!
   zone: Zone
   earningsTotal: Decimal
-  earningsFromApp: Decimal
+  earningsTotalFromApp: Decimal
   earningFromBasePay: Decimal
   earningsFromAppTips: Decimal
   earningsFromCashTips: Decimal
@@ -138,7 +138,7 @@ input DashWhereInput {
   endTime: DateTimeFilter
   zone: ZoneWhereInput
   earningsTotal: DecimalNullableFilter
-  earningsFromApp: DecimalNullableFilter
+  earningsTotalFromApp: DecimalNullableFilter
   earningFromBasePay: DecimalFilter
   earningsFromAppTips: DecimalFilter
   earningsFromCashTips: DecimalNullableFilter
@@ -182,7 +182,7 @@ input DashOrderByInput {
   startTime: OrderDirection
   endTime: OrderDirection
   earningsTotal: OrderDirection
-  earningsFromApp: OrderDirection
+  earningsTotalFromApp: OrderDirection
   earningFromBasePay: OrderDirection
   earningsFromAppTips: OrderDirection
   earningsFromCashTips: OrderDirection
@@ -193,7 +193,7 @@ input DashUpdateInput {
   endTime: DateTime
   zone: ZoneRelateToOneForUpdateInput
   earningsTotal: Decimal
-  earningsFromApp: Decimal
+  earningsTotalFromApp: Decimal
   earningFromBasePay: Decimal
   earningsFromAppTips: Decimal
   earningsFromCashTips: Decimal
@@ -215,7 +215,7 @@ input DashCreateInput {
   endTime: DateTime!
   zone: ZoneRelateToOneForCreateInput
   earningsTotal: Decimal
-  earningsFromApp: Decimal
+  earningsTotalFromApp: Decimal
   earningFromBasePay: Decimal
   earningsFromAppTips: Decimal
   earningsFromCashTips: Decimal

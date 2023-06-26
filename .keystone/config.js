@@ -71,7 +71,7 @@ var endTime = (0, import_fields.timestamp)({
 });
 var earningsTotal = (0, import_fields.decimal)({
   label: "Total Earnings",
-  precision: 5,
+  precision: 6,
   scale: 2,
   ui: {
     createView: { fieldMode: "hidden" },
@@ -81,9 +81,9 @@ var earningsTotal = (0, import_fields.decimal)({
     }
   }
 });
-var earningsFromApp = (0, import_fields.decimal)({
-  label: "Total Earnings",
-  precision: 5,
+var earningsTotalFromApp = (0, import_fields.decimal)({
+  label: "Total App Earnings",
+  precision: 6,
   scale: 2,
   ui: {
     createView: { fieldMode: "hidden" },
@@ -100,19 +100,19 @@ var earningsGroup = (0, import_core.group)({
     earningFromBasePay: (0, import_fields.decimal)({
       validation: { isRequired: true },
       label: "Base Pay",
-      precision: 5,
+      precision: 6,
       scale: 2
     }),
     earningsFromAppTips: (0, import_fields.decimal)({
       validation: { isRequired: true },
       label: "Tips from App",
-      precision: 5,
+      precision: 6,
       scale: 2
     }),
     earningsFromCashTips: (0, import_fields.decimal)({
       defaultValue: "0",
       label: "Cash Tips",
-      precision: 5,
+      precision: 6,
       scale: 2
     })
   }
@@ -128,8 +128,12 @@ var Dash = (0, import_core.list)({
       resolvedData,
       context
     }) => {
-      console.log(listKey, operation, item);
-      return resolvedData;
+      const { earningFromBasePay, earningsFromAppTips, earningsFromCashTips } = resolvedData;
+      return {
+        ...resolvedData,
+        earningsTotal: parseFloat(earningFromBasePay || item.earningFromBasePay) + parseFloat(earningsFromAppTips || item.earningsFromAppTips) + parseFloat(earningsFromCashTips || item.earningsFromCashTips),
+        earningsTotalFromApp: parseFloat(earningFromBasePay || item.earningFromBasePay) + parseFloat(earningsFromAppTips || item.earningsFromAppTips)
+      };
     }
   },
   fields: {
@@ -137,7 +141,7 @@ var Dash = (0, import_core.list)({
     endTime,
     zone,
     earningsTotal,
-    earningsFromApp,
+    earningsTotalFromApp,
     ...earningsGroup
   }
 });

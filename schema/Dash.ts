@@ -42,7 +42,7 @@ const endTime = timestamp({
 
 const earningsTotal = decimal({
   label: 'Total Earnings',
-  precision: 5,
+  precision: 6,
   scale: 2,
   ui: {
     createView: { fieldMode: 'hidden' },
@@ -53,9 +53,9 @@ const earningsTotal = decimal({
   },
 });
 
-const earningsFromApp = decimal({
-  label: 'Total Earnings',
-  precision: 5,
+const earningsTotalFromApp = decimal({
+  label: 'Total App Earnings',
+  precision: 6,
   scale: 2,
   ui: {
     createView: { fieldMode: 'hidden' },
@@ -73,19 +73,19 @@ const earningsGroup = group({
     earningFromBasePay: decimal({
       validation: { isRequired: true },
       label: 'Base Pay',
-      precision: 5,
+      precision: 6,
       scale: 2,
     }),
     earningsFromAppTips: decimal({
       validation: { isRequired: true },
       label: 'Tips from App',
-      precision: 5,
+      precision: 6,
       scale: 2,
     }),
     earningsFromCashTips: decimal({
       defaultValue: '0',
       label: 'Cash Tips',
-      precision: 5,
+      precision: 6,
       scale: 2,
     }),
   },
@@ -93,12 +93,30 @@ const earningsGroup = group({
 
 export const Dash = list({
   access: allowAll,
+  hooks: {
+    resolveInput: async ({
+      listKey,
+      operation,
+      inputData,
+      item,
+      resolvedData,
+      context,
+    }) => {
+      const { earningFromBasePay, earningsFromAppTips, earningsFromCashTips } = resolvedData;
+      
+      return {
+        ...resolvedData,
+        earningsTotal: parseFloat(earningFromBasePay || item.earningFromBasePay) + parseFloat(earningsFromAppTips || item.earningsFromAppTips) + parseFloat(earningsFromCashTips || item.earningsFromCashTips),
+        earningsTotalFromApp: parseFloat(earningFromBasePay || item.earningFromBasePay) + parseFloat(earningsFromAppTips || item.earningsFromAppTips),
+      }
+    },
+  },
   fields: {
     startTime,
     endTime,
     zone,
     earningsTotal,
-    earningsFromApp,
+    earningsTotalFromApp,
     ...earningsGroup,
   },
 });
