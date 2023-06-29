@@ -106,8 +106,8 @@ export const Dash = list({
       
       return {
         ...resolvedData,
-        earningsTotal: parseFloat(earningFromBasePay || item.earningFromBasePay) + parseFloat(earningsFromAppTips || item.earningsFromAppTips) + parseFloat(earningsFromCashTips || item.earningsFromCashTips),
-        earningsTotalFromApp: parseFloat(earningFromBasePay || item.earningFromBasePay) + parseFloat(earningsFromAppTips || item.earningsFromAppTips),
+        earningsTotal: parseFloat(earningFromBasePay || item?.earningFromBasePay) + parseFloat(earningsFromAppTips || item?.earningsFromAppTips) + parseFloat(earningsFromCashTips || item?.earningsFromCashTips),
+        earningsTotalFromApp: parseFloat(earningFromBasePay || item?.earningFromBasePay) + parseFloat(earningsFromAppTips || item?.earningsFromAppTips),
       }
     },
   },

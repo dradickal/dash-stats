@@ -131,8 +131,8 @@ var Dash = (0, import_core.list)({
       const { earningFromBasePay, earningsFromAppTips, earningsFromCashTips } = resolvedData;
       return {
         ...resolvedData,
-        earningsTotal: parseFloat(earningFromBasePay || item.earningFromBasePay) + parseFloat(earningsFromAppTips || item.earningsFromAppTips) + parseFloat(earningsFromCashTips || item.earningsFromCashTips),
-        earningsTotalFromApp: parseFloat(earningFromBasePay || item.earningFromBasePay) + parseFloat(earningsFromAppTips || item.earningsFromAppTips)
+        earningsTotal: parseFloat(earningFromBasePay || item?.earningFromBasePay) + parseFloat(earningsFromAppTips || item?.earningsFromAppTips) + parseFloat(earningsFromCashTips || item?.earningsFromCashTips),
+        earningsTotalFromApp: parseFloat(earningFromBasePay || item?.earningFromBasePay) + parseFloat(earningsFromAppTips || item?.earningsFromAppTips)
       };
     }
   },
