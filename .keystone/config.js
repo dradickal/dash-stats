@@ -73,6 +73,7 @@ var dashTime = (0, import_fields.decimal)({
   validation: { isRequired: true },
   precision: 4,
   scale: 2,
+  label: "Dash Time (1.5 = 1h 30m)",
   graphql: {
     isNonNull: {
       read: true,
@@ -84,6 +85,7 @@ var activeTime = (0, import_fields.decimal)({
   validation: { isRequired: true },
   precision: 4,
   scale: 2,
+  label: "Active Time (1.5 = 1h 30m)",
   graphql: {
     isNonNull: {
       read: true,
@@ -94,7 +96,8 @@ var activeTime = (0, import_fields.decimal)({
 var driveTime = (0, import_fields.decimal)({
   validation: { isRequired: false },
   precision: 4,
-  scale: 2
+  scale: 2,
+  label: "Drive Time (1.5 = 1h 30m)"
 });
 var earningsTotal = (0, import_fields.decimal)({
   label: "Total Earnings",
@@ -161,6 +164,21 @@ var Dash = (0, import_core.list)({
         earningsTotal: parseFloat(earningFromBasePay || item?.earningFromBasePay) + parseFloat(earningsFromAppTips || item?.earningsFromAppTips) + parseFloat(earningsFromCashTips || item?.earningsFromCashTips),
         earningsTotalFromApp: parseFloat(earningFromBasePay || item?.earningFromBasePay) + parseFloat(earningsFromAppTips || item?.earningsFromAppTips)
       };
+    },
+    validateInput: async ({
+      listKey,
+      operation,
+      inputData,
+      item,
+      resolvedData,
+      context,
+      addValidationError
+    }) => {
+      const { startTime: startTime2, endTime: endTime2 } = resolvedData;
+      if (endTime2 <= startTime2) {
+        addValidationError("The Dash End Time must be later than the Start Time.");
+      }
+      return;
     }
   },
   fields: {

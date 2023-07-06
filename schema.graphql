@@ -116,6 +116,9 @@ type Dash {
   startTime: DateTime!
   endTime: DateTime!
   zone: Zone
+  dashTime: Decimal!
+  activeTime: Decimal!
+  driveTime: Decimal
   earningsTotal: Decimal
   earningsTotalFromApp: Decimal
   earningFromBasePay: Decimal
@@ -137,6 +140,9 @@ input DashWhereInput {
   startTime: DateTimeFilter
   endTime: DateTimeFilter
   zone: ZoneWhereInput
+  dashTime: DecimalFilter
+  activeTime: DecimalFilter
+  driveTime: DecimalNullableFilter
   earningsTotal: DecimalNullableFilter
   earningsTotalFromApp: DecimalNullableFilter
   earningFromBasePay: DecimalFilter
@@ -155,17 +161,6 @@ input DateTimeFilter {
   not: DateTimeFilter
 }
 
-input DecimalNullableFilter {
-  equals: Decimal
-  in: [Decimal!]
-  notIn: [Decimal!]
-  lt: Decimal
-  lte: Decimal
-  gt: Decimal
-  gte: Decimal
-  not: DecimalNullableFilter
-}
-
 input DecimalFilter {
   equals: Decimal
   in: [Decimal!]
@@ -177,10 +172,24 @@ input DecimalFilter {
   not: DecimalFilter
 }
 
+input DecimalNullableFilter {
+  equals: Decimal
+  in: [Decimal!]
+  notIn: [Decimal!]
+  lt: Decimal
+  lte: Decimal
+  gt: Decimal
+  gte: Decimal
+  not: DecimalNullableFilter
+}
+
 input DashOrderByInput {
   id: OrderDirection
   startTime: OrderDirection
   endTime: OrderDirection
+  dashTime: OrderDirection
+  activeTime: OrderDirection
+  driveTime: OrderDirection
   earningsTotal: OrderDirection
   earningsTotalFromApp: OrderDirection
   earningFromBasePay: OrderDirection
@@ -192,6 +201,9 @@ input DashUpdateInput {
   startTime: DateTime
   endTime: DateTime
   zone: ZoneRelateToOneForUpdateInput
+  dashTime: Decimal
+  activeTime: Decimal
+  driveTime: Decimal
   earningsTotal: Decimal
   earningsTotalFromApp: Decimal
   earningFromBasePay: Decimal
@@ -214,6 +226,9 @@ input DashCreateInput {
   startTime: DateTime!
   endTime: DateTime!
   zone: ZoneRelateToOneForCreateInput
+  dashTime: Decimal!
+  activeTime: Decimal!
+  driveTime: Decimal
   earningsTotal: Decimal
   earningsTotalFromApp: Decimal
   earningFromBasePay: Decimal

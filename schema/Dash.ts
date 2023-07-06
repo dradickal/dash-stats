@@ -143,6 +143,23 @@ export const Dash = list({
         earningsTotalFromApp: parseFloat(earningFromBasePay || item?.earningFromBasePay) + parseFloat(earningsFromAppTips || item?.earningsFromAppTips),
       }
     },
+    validateInput: async ({
+      listKey,
+      operation,
+      inputData,
+      item,
+      resolvedData,
+      context,
+      addValidationError,
+    }) => {
+      const { startTime, endTime } = resolvedData;
+
+      if (endTime <= startTime ) {
+        addValidationError('The Dash End Time must be later than the Start Time.');
+      }
+
+      return;
+    },
   },
   fields: {
     startTime,
