@@ -40,6 +40,39 @@ const endTime = timestamp({
   },
 });
 
+const dashTime = decimal({
+  validation: { isRequired: true },
+  precision: 4,
+  scale: 2,
+  label: "Dash Time (1.5 = 1h 30m)",
+  graphql: {
+    isNonNull: {
+      read: true,
+      create: true,
+    },
+  },
+});
+
+const activeTime = decimal({
+  validation: { isRequired: true },
+  precision: 4,
+  scale: 2,
+  label: "Active Time (1.5 = 1h 30m)",
+  graphql: {
+    isNonNull: {
+      read: true,
+      create: true,
+    },
+  },
+});
+
+const driveTime = decimal({
+  validation: { isRequired: false },
+  precision: 4,
+  scale: 2,
+  label: "Drive Time (1.5 = 1h 30m)"
+});
+
 const earningsTotal = decimal({
   label: 'Total Earnings',
   precision: 6,
@@ -115,6 +148,9 @@ export const Dash = list({
     startTime,
     endTime,
     zone,
+    dashTime,
+    activeTime,
+    driveTime,
     earningsTotal,
     earningsTotalFromApp,
     ...earningsGroup,

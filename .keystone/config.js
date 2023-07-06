@@ -69,6 +69,33 @@ var endTime = (0, import_fields.timestamp)({
     }
   }
 });
+var dashTime = (0, import_fields.decimal)({
+  validation: { isRequired: true },
+  precision: 4,
+  scale: 2,
+  graphql: {
+    isNonNull: {
+      read: true,
+      create: true
+    }
+  }
+});
+var activeTime = (0, import_fields.decimal)({
+  validation: { isRequired: true },
+  precision: 4,
+  scale: 2,
+  graphql: {
+    isNonNull: {
+      read: true,
+      create: true
+    }
+  }
+});
+var driveTime = (0, import_fields.decimal)({
+  validation: { isRequired: false },
+  precision: 4,
+  scale: 2
+});
 var earningsTotal = (0, import_fields.decimal)({
   label: "Total Earnings",
   precision: 6,
@@ -140,6 +167,9 @@ var Dash = (0, import_core.list)({
     startTime,
     endTime,
     zone,
+    dashTime,
+    activeTime,
+    driveTime,
     earningsTotal,
     earningsTotalFromApp,
     ...earningsGroup
